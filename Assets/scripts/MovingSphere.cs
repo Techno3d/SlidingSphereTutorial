@@ -8,6 +8,7 @@ public class MovingSphere : MonoBehaviour
     float maxAccel = 10f;
     [SerializeField, Range(0f, 100f)]
     float maxSpeed = 10f;
+    Vector3 velocity = new Vector3(0f, 0f, 0f);
     // Start is called before the first frame update
     void Start()
     {
@@ -20,12 +21,11 @@ public class MovingSphere : MonoBehaviour
         Vector2 playerInp = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         Vector3 desired = new Vector3(playerInp.x, 0f, playerInp.y);
         desired = Vector3.ClampMagnitude(desired, 1f);
-        desired *= Time.deltaTime * maxAccel;
+        desired *= Time.deltaTime * maxSpeed;
 
         //Actual vel
-        Vector3 velocity = new Vector3(0f, 0f, 0f);
         velocity.x = Mathf.MoveTowards(velocity.x, desired.x, maxAccel*Time.deltaTime);
-        velocity.z = Mathf.MoveTowards(velocity.y, desired.y, maxAccel*Time.deltaTime);
+        velocity.z = Mathf.MoveTowards(velocity.z, desired.z, maxAccel*Time.deltaTime);
         transform.localPosition += velocity * Time.deltaTime;
     }
 }
