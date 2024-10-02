@@ -21,7 +21,7 @@ public class MovingSphere : MonoBehaviour
         Vector2 playerInp = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         Vector3 desired = new Vector3(playerInp.x, 0f, playerInp.y);
         desired = Vector3.ClampMagnitude(desired, 1f);
-        desired *= Time.deltaTime * maxSpeed;
+        desired *= maxSpeed;
 
         //Actual vel
         velocity.x = Mathf.MoveTowards(velocity.x, desired.x, maxAccel*Time.deltaTime);
