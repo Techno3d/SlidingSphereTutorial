@@ -8,6 +8,8 @@ public class MovingSphere : MonoBehaviour
     float maxAccel = 10f;
     [SerializeField, Range(0f, 100f)]
     float maxSpeed = 10f;
+    [SerializeField]
+    Rect bounding = new Rect(-5f, -5f, 10f, 10f);
     Vector3 velocity = new Vector3(0f, 0f, 0f);
     // Start is called before the first frame update
     void Start()
